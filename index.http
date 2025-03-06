@@ -1,0 +1,121 @@
+GET http://localhost:5000/api/users
+
+###
+
+POST http://localhost:5000/api/users
+Content-Type: application/json
+
+{
+    "name": "Pedro",
+    "age": 20,
+    "email": "pedro@gmail.com",
+    "password": "123456",
+    "role": "user"
+}
+
+###
+
+POST http://localhost:5000/api/users
+Content-Type: application/json
+
+{
+    "name": "Mar",
+    "age": 22,
+    "email": "mar@gmail.com",
+    "password": "654321",
+    "role": "user"
+}
+
+###
+//hacer el get a un usuario ya creado
+
+GET http://localhost:5000/api/users/mar@gmail.com
+
+###
+//hacer el get a todos los usuarios
+GET http://localhost:5000/api/users
+
+###
+//actualizar un usuario ya creado
+
+PUT http://localhost:5000/api/users/pedro@gmail.com
+Content-Type: application/json
+
+{
+    "name": "Pedro",
+    "age": 22,
+    "email": "pedro@gmail.com",
+    "password": "654321",
+    "role": "user"
+}
+
+###
+//eliminar un usuario ya creado
+
+DELETE http://localhost:5000/api/users/mar@gmail.com
+
+###
+POST http://localhost:5000/api/storage
+Content-Type: multipart/form-data; boundary=boundary123
+
+--boundary123
+Content-Disposition: form-data; name="image"; filename="fondo.jpg"
+Content-Type: image/jpeg
+
+< ./fondo.jpg
+--boundary123--
+
+###
+
+POST http://localhost:5000/api/tracks HTTP/1.1
+Content-Type: application/json
+api_key: Api-publica-123
+
+###
+
+GET http://localhost:5000/api/tracks
+
+###
+
+GET http://localhost:5000/api/tracks/67c8164b53d4f3fe4e9763db
+
+###
+
+POST http://localhost:5000/api/tracks
+Content-Type: application/json
+
+{
+    "name": "Track 1",  
+    "album": "Album 1",
+    "cover": "https://example.com/cover1.jpg",
+    "artist": {
+        "name": "Artist 1",
+        "nickname": "Artist 1",
+        "nationality": "Artist 1"
+    },
+    "duration": {
+        "start": 10,
+        "end": 20
+    },
+    "mediaId": "1"
+}
+
+###
+
+POST http://localhost:3000/api/auth/register HTTP/1.1
+Content-Type: application/json
+{
+ "name": "Menganito",
+ "age": 20,
+ "email": "test10@test.com",
+ "password": "HolaMundo.01"
+}
+
+###
+
+POST http://localhost:3000/api/auth/login HTTP/1.1
+Content-Type: application/json
+{
+ "email": "test10@test.com",
+ "password": "HolaMundo.01"
+}
