@@ -1,4 +1,4 @@
-const TracksModel = require("../models/tracks.js")
+const TracksModel = require("../models/mysql/tracks.js")
 const { matchedData } = require('express-validator')
 const { handleHttpError } = require('../utils/handleError')
 

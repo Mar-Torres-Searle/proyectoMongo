@@ -1,6 +1,8 @@
 const express = require("express")
 const cors = require("cors")
+const { sequelize, dbConnectMySql } = require("./config/mysql")
 require('dotenv').config();
+
 const {routerUsers} = require("./routers/routerUsers")
 const {routerStorage} = require("./routers/routerStorage")
 const {routerTracks} = require("./routers/routerTracks")
@@ -19,7 +21,15 @@ app.listen(port, () => {
 
 const dbConnect = require('./config/mongo')
 
-dbConnect()
+
+if (process.env.ENGINE_DB === 'nosql'){
+    dbConnect()
+    // Crea las colecciones por defecto si no existieran
+}else{
+    dbConnectMySql()
+    sequelize.sync() // Crea las tablas en la base de datos si no existieran
+}
+   
 
 
 app.use("/api/users", routerUsers)
@@ -27,3 +37,4 @@ app.use("/api/storage", routerStorage)
 app.use("/img", express.static("storage"))
 app.use("/api/tracks", routerTracks)
 app.use("/api/auth", routerAuth)
+

@@ -1,4 +1,4 @@
-const UserModel = require("../models/users.js")
+const UserModel = require("../models/mysql/users.js")
 
 const createItem = async (req,res) => {
     const result = await UserModel.create(req.body)

@@ -1,5 +1,5 @@
 const { uploadToPinata } = require("../utils/handleUploadPFS")
-const storageModel = require("../models/storage")
+const storageModel = require("../models/mysql/storage")
 
 const createItem = async (req, res) => {
     const { body, file } = req
