@@ -14,7 +14,7 @@ const { handleHttpError } = require('../utils/handleError')
 const createItem = async (req, res) => {
     try {
         const body = matchedData(req) //El dato filtrado por el modelo (probar con body=req)
-        const data = await TracksModel.create(body)
+        const data = await (await TracksModel.create(body)).populate('mediaId')
         console.log("Recurso track creado", data)
         res.send(data)
     }catch(err){
@@ -36,7 +36,7 @@ const getItems = async (req, res) => {
 const getItem = async (req, res) => {
     try {
         const { id } = req.params;
-        const item = await TracksModel.findById(id);    
+        const item = await TracksModel.findById(id).populate('mediaId');    
         if (!item) {
             return res.status(404).send({ message: 'Item not found' });
         }

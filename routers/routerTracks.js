@@ -18,11 +18,11 @@ const {customHeader} = require("../middleware/customHeader")
 routerTracks.get("/:id", getItem)
 routerTracks.get("/", getItems)
 
-routerTracks.post("/", validatorCreateItem, customHeader, createItem)
+routerTracks.post("/", validatorCreateItem, createItem)
 
-routerTracks.put("/:id", updateItem)
+//routerTracks.put("/:id", updateItem)
 
-routerTracks.delete("/:id", deleteItem)
+//routerTracks.delete("/:id", deleteItem)
 
 
 module.exports = {routerTracks}
